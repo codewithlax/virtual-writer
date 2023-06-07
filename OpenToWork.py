@@ -26,9 +26,7 @@ while True:
         img = detector.find_hands(cv2.flip(img, 1))
         landmark_list = detector.find_position(img)
         if len(landmark_list) != 0:
-            print(landmark_list[4], landmark_list[8])
-            # Check if index finger is opened up:
-            # if (landmark_list[5][2] > landmark_list[8][2]) and (landmark_list[9][2] > landmark_list[12][2]):
+            # Check if tip of index finger and thumb are close enough:
             if (abs(landmark_list[4][1] - landmark_list[8][1]) < 20) and (
                     abs(landmark_list[4][2] - landmark_list[8][2]) < 20):
                 x2, y2 = landmark_list[8][1], landmark_list[8][2]
